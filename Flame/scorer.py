@@ -1,8 +1,8 @@
 __author__ = 'Caleytown'
 from abc import ABCMeta, abstractmethod
 
-class scorer:
+class Scorer:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def blank(self): pass
+    def calcScore(self): pass

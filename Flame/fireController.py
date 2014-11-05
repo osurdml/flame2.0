@@ -14,4 +14,10 @@ class FireController():
 
         self.scorer.calcScore(self.fireConsumers, fireData)
 
+        for x in self.fireConsumers:
+            x.updateScore(self.scorer)
+
+    def hasData(self):
+        return False
+
 
