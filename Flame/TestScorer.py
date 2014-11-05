@@ -8,5 +8,5 @@ class TestScorer(Scorer):
         someNumber = 0
 
 
-    def calcScore(self):
+    def calcScore(self,fireConsumer, fireData):
         return "calcScore"

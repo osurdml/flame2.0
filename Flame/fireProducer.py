@@ -6,3 +6,5 @@ class FireProducer:
 
     @abstractmethod
     def getFireData(self): pass
+
+    def hasData(self): pass

@@ -7,9 +7,9 @@ class TestFireConsumer(FireConsumer):
     def __init__(self):
         someNumber = 0
 
-    def updateScore(self):
+    def updateScore(self, scorer):
         return "updatedScore"
 
-    def consumeFireData(self):
+    def consumeFireData(self, fireData):
         return "fireData"
 

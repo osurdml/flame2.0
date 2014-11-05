@@ -5,7 +5,7 @@ class FireConsumer:
 
 
     @abstractmethod
-    def updateScore(self): pass
+    def updateScore(self, scorer): pass
 
     @abstractmethod
-    def consumeFireData(self): pass
+    def consumeFireData(self, fireData): pass

@@ -5,4 +5,4 @@ class Scorer:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def calcScore(self): pass
+    def calcScore(self,fireConsumer, fireData): pass

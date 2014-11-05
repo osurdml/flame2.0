@@ -1,9 +1,9 @@
+__author__ = 'Caleytown'
+
 from FireController import FireController
 from TestFireConsumer import TestFireConsumer
 from TestFireProducer import TestFireProducer
 from TestScorer import TestScorer
-
-__author__ = 'Caleytown'
 
 fireConsumer = TestFireConsumer()
 fireConsumer2 = TestFireConsumer()

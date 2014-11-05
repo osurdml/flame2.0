@@ -18,6 +18,7 @@ class FireController():
             x.updateScore(self.scorer)
 
     def hasData(self):
-        return False
+        return self.fireProducer.hasData()
+
 
 

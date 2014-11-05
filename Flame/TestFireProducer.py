@@ -9,3 +9,6 @@ class TestFireProducer(FireProducer):
 
     def getFireData(self):
         return "fireData"
+
+    def hasData(self):
+        return False
