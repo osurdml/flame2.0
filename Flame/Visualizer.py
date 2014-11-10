@@ -1,9 +1,9 @@
 import pygame
 
-class Disp
+class Visualizer:
     def __init__
         #startups
-    def disp()
+    def vis()
         # publish state of fire, agents,hotspots, and actions?
         values = ()#what to display
         values[values == 0] = 0xFFFFFFF #background

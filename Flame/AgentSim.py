@@ -1,18 +1,16 @@
-__author__ = 'Caleytown'
-
 from FireController import FireController
 from TestFireConsumer import TestFireConsumer
 from TestFireProducer import TestFireProducer
 from TestScorer import TestScorer
 
-fireConsumer = TestFireConsumer()
-fireConsumer2 = TestFireConsumer()
-fireProducer = TestFireProducer()
+FrontierConsumer = TestFrontierConsumer()
+FrontierConsumer2 = TestFrontierConsumer()
+FrontierProducer = TestFrontierProducer()
 scorer = TestScorer()
 
-fireController = FireController(scorer,fireProducer,[fireConsumer, fireConsumer2])
+FrontierController = FrontierController(scorer,FrontierProducer,[FrontierConsumer, FrontierConsumer2])
 
-while(fireController.hasData()):
-    fireController.tick()
-
+while(FireController.hasData()):
+    FrontierController.tick()
+    Visualizer.Vis(FrontierController.frontierData,fireConsumer)
 

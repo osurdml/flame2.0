@@ -1,15 +1,14 @@
-__author__ = 'Caleytown'
-__author__ = 'skeel3r' # what is this for?
+from FrontierProducer import frontierProducer
 
 class FireController():
 
     def __init__(self,scorer,fireProducer,fireConsumers):
         self.scorer = scorer
-        self.frontierProducer = fireProducer
+        self.frontierProducer = frontierProducer
         self.frontierConsumers = frontierConsumers
 
     def tick(self):
-        frontierData = self.frontierProducer.getFireData(tick)
+        self.frontierData = self.frontierProducer.getFrontierData(step)
         for x in self.fireConsumers:
             x.consumeFireData(frontierData)
 
@@ -18,6 +17,8 @@ class FireController():
         for x in self.frontierConsumers:
             x.updateScore(self.scorer)
 
+        visualizer.vis()
+        step += 1
     def hasData(self):
         return self.frontierProducer.hasData()
 
