@@ -9,11 +9,10 @@ fireConsumer = TestFireConsumer()
 fireConsumer2 = TestFireConsumer()
 fireProducer = TestFireProducer()
 scorer = TestScorer()
-display = Displayer()
 
 fireController = FireController(scorer,fireProducer,[fireConsumer, fireConsumer2])
 
 while(fireController.hasData()):
     fireController.tick()
-    display.display(scorer,fireProducer,[fireConsumer, fireConsumer2])
+
 

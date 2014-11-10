@@ -11,6 +11,5 @@ class TestFireConsumer(FireConsumer):
         return "updatedScore"
 
     def consumeFireData(self, fireData):
-        #take an action
         return "fireData"
 
