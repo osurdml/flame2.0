@@ -1,16 +1,19 @@
-from FireController import FireController
-from TestFireConsumer import TestFireConsumer
-from TestFireProducer import TestFireProducer
+#Frontier simulator 
+from FrontierController import FrontierController
+from TestFrontierConsumer import TestFrontierConsumer
+from FarsiteProducer import FarsiteProducer
 from TestScorer import TestScorer
+from Visualizer import Visualizer
 
-FrontierConsumer = TestFrontierConsumer()
-FrontierConsumer2 = TestFrontierConsumer()
-FrontierProducer = TestFrontierProducer()
+frontierConsumer = TestFrontierConsumer()
+frontierConsumer2 = TestFrontierConsumer()
+frontierProducer = FarsiteProducer()
 scorer = TestScorer()
+i = 0
+frontierController = FrontierController(scorer,frontierProducer,[frontierConsumer, frontierConsumer2])
+visualizer = Visualizer(frontierController.frontierData)
 
-FrontierController = FrontierController(scorer,FrontierProducer,[FrontierConsumer, FrontierConsumer2])
-
-while(FireController.hasData()):
-    FrontierController.tick()
-    Visualizer.Vis(FrontierController.frontierData,fireConsumer)
-
+while(i < 10000): #frontierController.hasData()):
+    frontierController.tick()
+    visualizer.vis(frontierController.frontierData)
+    i = i +1
