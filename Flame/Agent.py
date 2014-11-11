@@ -1,5 +1,5 @@
-
 __author__ = 'Caleytown'
+
 from FireConsumer import FireConsumer
 from abc import ABCMeta, abstractmethod
 

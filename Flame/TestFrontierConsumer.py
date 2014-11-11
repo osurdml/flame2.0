@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
-from FireConsumer import FireConsumer
+from FrontierConsumer import FrontierConsumer
 
 
-class TestFireConsumer(FireConsumer):
+class TestFrontierConsumer(FrontierConsumer):
 
     def __init__(self):
         someNumber = 0
@@ -10,6 +10,7 @@ class TestFireConsumer(FireConsumer):
     def updateScore(self, scorer):
         return "updatedScore"
 
-    def consumeFireData(self, fireData):
-        return "fireData"
+    def consumeFrontierData(self, frontierData):
+
+        return "frontierData"
 

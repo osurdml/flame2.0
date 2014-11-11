@@ -1,24 +1,24 @@
-from FrontierProducer import frontierProducer
+from FrontierProducer import FrontierProducer
 
-class FireController():
+class FrontierController():
 
-    def __init__(self,scorer,fireProducer,fireConsumers):
+    def __init__(self,scorer, FrontierProducer, FrontierConsumers):
         self.scorer = scorer
-        self.frontierProducer = frontierProducer
-        self.frontierConsumers = frontierConsumers
+        self.frontierProducer = FrontierProducer
+        self.frontierConsumers = FrontierConsumers
+        self.step = 0
 
     def tick(self):
-        self.frontierData = self.frontierProducer.getFrontierData(step)
-        for x in self.fireConsumers:
-            x.consumeFireData(frontierData)
+        self.frontierData = self.frontierProducer.GetFrontierData(self.step)
+        for x in self.frontierConsumers:
+            x.consumeFrontierData(self.frontierData)
 
-        self.scorer.calcScore(self.frontierConsumers, frontierData)
+        self.scorer.calcScore(self.frontierConsumers, self.frontierData)
 
         for x in self.frontierConsumers:
             x.updateScore(self.scorer)
 
-        visualizer.vis()
-        step += 1
+        self.step += 1
     def hasData(self):
         return self.frontierProducer.hasData()
 

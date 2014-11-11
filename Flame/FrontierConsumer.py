@@ -1,7 +1,7 @@
 __author__ = 'Caleytown'
 from abc import ABCMeta, abstractmethod
 
-class FireConsumer:
+class FrontierConsumer():
 
 
     @abstractmethod

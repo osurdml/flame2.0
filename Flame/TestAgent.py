@@ -10,5 +10,5 @@ class TestAgent(Agent):
     def updateScore(self):
         return "updatedScore"
 
-    def consumeFireData(self):
-        return "consumedFireData"
+    def consumeFrontierData(self):
+        return "consumedFrontierData"

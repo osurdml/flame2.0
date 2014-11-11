@@ -4,11 +4,10 @@ import osgeo.gdal
 import pygame
 import sklearn.cluster
 
-
-class FireProducer:
+class FrontierProducer():
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def getFrontierData(self, step): pass
+    def GetFrontierData(self, step): pass
     def hasData(self): pass
 
