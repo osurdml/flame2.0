@@ -1,8 +1,6 @@
-from FrontierProducer import FrontierProducer
-
 class FrontierController():
 
-    def __init__(self,scorer, FrontierProducer, FrontierConsumers):
+    def __init__(self, scorer, FrontierProducer, FrontierConsumers):
         self.scorer = scorer
         self.frontierProducer = FrontierProducer
         self.frontierConsumers = FrontierConsumers
@@ -18,7 +16,8 @@ class FrontierController():
         for x in self.frontierConsumers:
             x.updateScore(self.scorer)
 
-        self.step += 1
+        self.step += .01
+
     def hasData(self):
         return self.frontierProducer.hasData()
 

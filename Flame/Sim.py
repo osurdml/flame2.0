@@ -1,21 +1,20 @@
 #Frontier simulator 
 from FrontierController import FrontierController
-from TestFrontierConsumer import TestFrontierConsumer
+from TestAgent import TestAgent
 from FarsiteProducer import FarsiteProducer
 from TestScorer import TestScorer
 from Visualizer import Visualizer
 import time
 
-frontierConsumer = TestFrontierConsumer()
-frontierConsumer2 = TestFrontierConsumer()
+agent1 = TestAgent()
+agent2 = TestAgent()
 frontierProducer = FarsiteProducer()
 scorer = TestScorer()
 i = 0
-frontierController = FrontierController(scorer,frontierProducer,[frontierConsumer, frontierConsumer2])
+frontierController = FrontierController(scorer,frontierProducer,[agent1, agent2])
 visualizer = Visualizer()
 
 while(i < 10000): #frontierController.hasData()):
     frontierController.tick()
     visualizer.vis(frontierController.frontierData)
     i = i +1
-    time.sleep(.1)
