@@ -18,18 +18,19 @@ class NeuroFrontierConsumer(FrontierConsumer):
         self.actionTaken = 0
         self.location = [0,0]
 
-    def updateScore(self, scorer):
-        self.score = scorer
-
-    def consumeFrontierData(self, frontierData):
+    def consumeFrontierData(self, frontierData, time):
+        self.timeElapsed = time
         self.numbAgents = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
         self.distAgents =[randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
         self.numbHotSpots = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
         self.distHotSpots = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
         self.timeElapsed = randint(1,10)
         self.distToFireCenter = randint(1,10)
+        self.calcActionTaken()
+        self.takeAction()
 
-        return "frontierData"
+    def setScore(self,score):
+        self.score = score
 
     def getScore(self):
         return self.score

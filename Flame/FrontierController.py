@@ -11,7 +11,7 @@ class FrontierController():
     def tick(self):
         self.frontierData = self.frontierProducer.GetFrontierData(self.step)
         for x in self.frontierConsumers:
-            x.consumeFrontierData(self.frontierData)
+            x.consumeFrontierData(self.frontierData,self.step)
 
         self.scorer.calcScore(self.frontierConsumers, self.frontierData)
 
@@ -19,6 +19,7 @@ class FrontierController():
             x.updateScore(self.scorer)
 
         self.step += 1
+
     def hasData(self):
         return self.frontierProducer.hasData()
 
