@@ -1,4 +1,3 @@
-__author__ = 'Caleytown'
 from Scorer import Scorer
 from abc import ABCMeta, abstractmethod
 
@@ -8,5 +7,5 @@ class TestScorer(Scorer):
         someNumber = 0
 
 
-    def calcScore(self,fireConsumer, fireData):
+    def calcScore(self,frontierConsumer, frontierData):
         return "calcScore"

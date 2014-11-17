@@ -1,13 +1,11 @@
-__author__ = 'Caleytown'
-
-from FireConsumer import FireConsumer
+from FrontierConsumer import FrontierConsumer
 from abc import ABCMeta, abstractmethod
 
-class Agent(FireConsumer):
+class Agent(FrontierConsumer):
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def updateScore(self): pass
 
     @abstractmethod
-    def consumeFireData(self): pass
+    def consumeFrontierData(self, FrontierData): pass
