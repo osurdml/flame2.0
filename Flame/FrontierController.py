@@ -8,8 +8,10 @@ class FrontierController():
 
     def tick(self):
         self.frontierData = self.frontierProducer.GetFrontierData(self.step)
+        #apply data filter to find hotspots or any other non agent specific info
         for x in self.frontierConsumers:
-            x.consumeFrontierData(self.frontierData)
+            #apply agent specific filter
+            x.consumeFrontierData(self.frontierData,self.step) #give agent specific data
 
         self.scorer.calcScore(self.frontierConsumers, self.frontierData)
 

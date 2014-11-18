@@ -16,6 +16,7 @@ class NeuroSim():
         self.frontierConsumer2 = NeuroFrontierConsumer(NNet)
         self.frontierProducer = FarsiteProducer()
         self.scorer = NeuroScorer()
+        #self.
         self.frontierController = FrontierController(self.scorer,self.frontierProducer,[self.frontierConsumer, self.frontierConsumer2])
 
     def calcScore(self,NNet):
