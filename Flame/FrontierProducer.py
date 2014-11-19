@@ -8,6 +8,6 @@ class FrontierProducer():
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def GetFrontierData(self, step): pass
+    def getFrontierData(self, step): pass
     def hasData(self): pass
 

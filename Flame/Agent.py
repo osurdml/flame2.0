@@ -1,11 +1,14 @@
-from FrontierConsumer import FrontierConsumer
 from abc import ABCMeta, abstractmethod
 
-class Agent(FrontierConsumer):
+class Agent():
     __metaclass__ = ABCMeta
 
     @abstractmethod
     def updateScore(self): pass
 
     @abstractmethod
-    def consumeFrontierData(self, FrontierData): pass
+    def consumeFilterData(self, FilterData): pass
+
+    @abstractmethod
+    def getLocation(self):
+        pass

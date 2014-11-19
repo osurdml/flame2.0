@@ -1,8 +1,8 @@
 from abc import ABCMeta, abstractmethod
-from FrontierConsumer import FrontierConsumer
+from FilterConsumer import FilterConsumer
 
 
-class TestFrontierConsumer(FrontierConsumer):
+class TestFilterConsumer(FilterConsumer):
 
     def __init__(self):
         someNumber = 0
@@ -10,7 +10,7 @@ class TestFrontierConsumer(FrontierConsumer):
     def updateScore(self, scorer):
         return "updatedScore"
 
-    def consumeFrontierData(self, frontierData):
+    def consumeFilterData(self, filterData):
 
         return "frontierData"
 

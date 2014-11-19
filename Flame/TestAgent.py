@@ -10,8 +10,9 @@ class TestAgent(Agent):
     def updateScore(self):
         return "updatedScore"
 
-    def consumeFrontierData(self):
+    def consumeFilterData(self):
         print self.location
         action = (0, 1)
         self.location = self.location + action
+    def getLocation(self):
         return self.location
