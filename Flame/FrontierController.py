@@ -24,6 +24,7 @@ class FrontierController():
         for x in self.filterConsumers:
             x.updateScore(self.scorer)
 
+
         self.step += .01
 
     def hasData(self):

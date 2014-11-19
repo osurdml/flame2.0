@@ -6,13 +6,46 @@ from NeuroSim import NeuroSim
 #from Visualizer import Visualizer
 import time
 import numpy as np
-import neurolab as nl
+from pybrain.structure import FeedForwardNetwork, LinearLayer, SigmoidLayer, FullConnection
+from pybrain.optimization import GA
+
+def evaluator(x):
+    print nN
+    nN._setParameters(x)
+    neuroSim = NeuroSim(nN)
+    return neuroSim.calcScore()
 
 populationSize = 100
 NNetList = []
-for k in range(0,populationSize):
-    nN = nl.net.newff([[1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10], [1, 10]], [5, 5, 1])
-    neuroSim = NeuroSim(nN)
-    NNetList.append(nN)
-    neuroSim.calcScore(NNetList[k])
+nN = FeedForwardNetwork()
+
+inLayer = LinearLayer(18)
+hiddenLayer1 = SigmoidLayer(5)
+hiddenLayer2 = SigmoidLayer(5)
+outLayer = LinearLayer(1)
+
+nN.addInputModule(inLayer)
+nN.addModule(hiddenLayer1)
+nN.addModule(hiddenLayer2)
+nN.addOutputModule(outLayer)
+
+in_to_hidden1 = FullConnection(inLayer,hiddenLayer1)
+hidden1_to_hidden2 = FullConnection(hiddenLayer1,hiddenLayer2)
+hidden_to_out = FullConnection(hiddenLayer2,outLayer)
+
+nN.addConnection(in_to_hidden1)
+nN.addConnection(hidden1_to_hidden2)
+nN.addConnection(hidden_to_out)
+
+nN.sortModules()
+
+neuroSim = NeuroSim(nN)#make this a lamda function
+
+x0 = GAEvo(nN.params)
+ga = GA(evaluator,nN.params,maxEvaluations = 50)
+ga.learn()
+
+neuroSim = NeuroSim(nN)
+NNetList.append(nN)
+neuroSim.calcScore(NNetList[k])
 
