@@ -7,7 +7,8 @@ from TestScorer import TestScorer
 #from Visualizer import Visualizer
 import time
 import numpy as np
-import neurolab as nl
+#import neurolab as nl
+from pybrain.structure import FeedForwardNetwork
 
 
 class NeuroSim():
@@ -16,10 +17,11 @@ class NeuroSim():
         self.frontierConsumer2 = NeuroFrontierConsumer(NNet)
         self.frontierProducer = FarsiteProducer()
         self.scorer = NeuroScorer()
-        #self.
+        #self.hotSpotFilter = Filters()
+        #self.agentFilter = Filters()
         self.frontierController = FrontierController(self.scorer,self.frontierProducer,[self.frontierConsumer, self.frontierConsumer2])
 
-    def calcScore(self,NNet):
+    def calcScore(self):
         i = 0
         totalScore = 0
         while(i < 10): #frontierController.hasData()):
