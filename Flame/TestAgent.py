@@ -13,7 +13,7 @@ class TestAgent(Agent):
         return "updatedScore"
 
     def consumeFilterData(self, data):
-        action = (0, 1)
+        action = (random.randint(-1,1), random.randint(-1,1))
         self.x = self.x + action[0]
         self.y = self.y + action[1]
 

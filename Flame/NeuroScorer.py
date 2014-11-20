@@ -12,7 +12,7 @@ class NeuroScorer(Scorer):
         for k in fireConsumers:
             location = k.getLocation()
             self.isHotspotObserved(location)
-            k.setScore(location)
+            k.updateScore(location)
 
     def isHotspotObserved(self,agentLocation):
         return "noIdea"

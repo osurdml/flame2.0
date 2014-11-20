@@ -15,12 +15,15 @@ class Visualizer():
         # publish state of fire, agents,hotspots, and actions?
         values = (frontier).astype(np.uint32)  #what to display
         values[values == 0] = 0xFFFFFF #background
-        image = pygame.Surface(frontier.shape)
-        pygame.surfarray.blit_array(image, values)
-        self.screen.blit(image, (0,0))
-        agentSurf = pygame.Surface(frontier.shape)
-        for x in agentLocations:
-            pygame.draw.circle(image, (0,255,0), (x[0], x[1]), 2)
 
-        self.screen.blit(image,(0,0))
+        # Clear the screen
+        self.screen.fill((0,0,0))
+
+        # Blit the fire
+        pygame.surfarray.blit_array(self.screen, values)
+
+        # Draw the agents
+        for x in agentLocations:
+            pygame.draw.circle(self.screen, (0,255,0), (x[0], x[1]), 2)
+
         pygame.display.flip()

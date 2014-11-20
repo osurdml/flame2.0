@@ -1,10 +1,10 @@
 from abc import ABCMeta, abstractmethod
-from FrontierConsumer import FrontierConsumer
+from Agent import Agent
 from random import randint
 import math
 
 
-class NeuroFrontierConsumer(FrontierConsumer):
+class NeuroAgent(Agent):
 
     def __init__(self,NNet):
         self.nNet = NNet
@@ -18,8 +18,8 @@ class NeuroFrontierConsumer(FrontierConsumer):
         self.actionTaken = 0
         self.location = [0,0]
 
-    def consumeFrontierData(self, frontierData, time):
-        self.timeElapsed = time
+    def consumeFilterData(self, frontierData):
+        self.timeElapsed = randint(1,10)
         self.numbAgents = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
         self.distAgents =[randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
         self.numbHotSpots = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
@@ -29,7 +29,7 @@ class NeuroFrontierConsumer(FrontierConsumer):
         self.calcActionTaken()
         self.takeAction()
 
-    def setScore(self,score):
+    def updateScore(self,score):
         self.score = score
 
     def getScore(self):

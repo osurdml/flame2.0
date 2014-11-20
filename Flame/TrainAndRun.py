@@ -1,5 +1,4 @@
 from FrontierController import FrontierController
-from TestFrontierConsumer import TestFrontierConsumer
 from FarsiteProducer import FarsiteProducer
 from TestScorer import TestScorer
 from NeuroSim import NeuroSim
@@ -8,11 +7,13 @@ import time
 import numpy as np
 from pybrain.structure import FeedForwardNetwork, LinearLayer, SigmoidLayer, FullConnection
 from pybrain.optimization import GA
+from Visualizer import Visualizer
+
 
 def evaluator(x):
     print nN
     nN._setParameters(x)
-    neuroSim = NeuroSim(nN)
+    neuroSim = NeuroSim(nN,0)
     return neuroSim.calcScore()
 
 populationSize = 100
@@ -39,12 +40,10 @@ nN.addConnection(hidden_to_out)
 
 nN.sortModules()
 
-neuroSim = NeuroSim(nN)#make this a lamda function
+neuroSim = NeuroSim(nN,0)
 
 ga = GA(evaluator,nN.params,maxEvaluations = 50)
 ga.learn()
 
-neuroSim = NeuroSim(nN)
-NNetList.append(nN)
-neuroSim.calcScore(NNetList[k])
 
+neuroSim = NeuroSim(nN,1)
