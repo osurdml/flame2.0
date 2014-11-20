@@ -12,6 +12,7 @@ class FrontierController():
         self.frontierData = self.frontierProducer.getFrontierData(self.step)
         #apply data filter to find hotspots or any other non agent specific info
 #        self.filters[0].filterData(self.frontierData)
+        self.agentLocations = []
         for x in self.filterConsumers:
             self.agentLocations.append(x.getLocation())
 
@@ -26,7 +27,7 @@ class FrontierController():
  #           x.updateScore(self.scorer)
 
 
-        self.step += .1
+        self.step += .01
 
     def hasData(self):
         return self.frontierProducer.hasData()
