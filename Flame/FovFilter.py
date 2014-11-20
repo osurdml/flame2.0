@@ -7,6 +7,16 @@ class FovFilter(Filters):
             self.state = 0
             pass
         def filterData(self, frontierData, hotspotData, myLoc, agentLocations):
+           # for x in agentLocations:
+           #     angle = math.tan((myLoc[0] - x[0]) / (myLoc[1] - x[1]))
+           #     if (angle > 0) and (angle < 90):
+           #         print angle
+           #     if (angle > 90) and (angle < 180):
+           #         print angle
+           #     if (angle > 180) and (angle < 270):
+           #         print angle
+           #     if (angle > 270) and (angle < 360):
+           #         print angle
            # theta = # zero to 2pi angles
            # r = AgentLoc.z*math.sin(angle) # placeholding
            # self.fov = np.int([AgentLoc.x + math.sin(r*theta)], [AgentLoc.y + math.cos(r*theta)])
