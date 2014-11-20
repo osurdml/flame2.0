@@ -9,10 +9,11 @@ class FrontierController():
 
     def tick(self):
         self.frontierData = self.frontierProducer.getFrontierData(self.step)
+        agentLocations = []
         #apply data filter to find hotspots or any other non agent specific info
         self.filters[0].filterData(self.frontierData)
         for x in self.filterConsumers:
-            self.agentLocations.append(x.getLocation())
+            agentLocations.append(x.getLocation())
 
         for x in self.filterConsumers:
             #apply agent specific filter
