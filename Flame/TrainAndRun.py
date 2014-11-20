@@ -41,7 +41,6 @@ nN.sortModules()
 
 neuroSim = NeuroSim(nN)#make this a lamda function
 
-x0 = GAEvo(nN.params)
 ga = GA(evaluator,nN.params,maxEvaluations = 50)
 ga.learn()
 
