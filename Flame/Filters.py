@@ -4,7 +4,7 @@ class Filters():
    __metaclass__ = ABCMeta
 
    @abstractmethod
-   def filterData(self): pass
+   def filterData(self, Data): pass
 
    @abstractmethod
-   def getData(): pass
+   def getData(self): pass

@@ -11,12 +11,16 @@ class Visualizer():
         pygame.display.set_caption("Flame2.0: Fire Simulator")
         self.screen = pygame.display.set_mode(frontier.shape, pygame.HWSURFACE | pygame.DOUBLEBUF)
 
-    def vis(self, frontier):
+    def vis(self, frontier, agentLocations):
         # publish state of fire, agents,hotspots, and actions?
         values = (frontier).astype(np.uint32)  #what to display
         values[values == 0] = 0xFFFFFF #background
         image = pygame.Surface(frontier.shape)
         pygame.surfarray.blit_array(image, values)
-        
         self.screen.blit(image, (0,0))
+        agentSurf = pygame.Surface(frontier.shape)
+        for x in agentLocations:
+            pygame.draw.circle(image, (0,255,0), (x[0], x[1]), 2)
+
+        self.screen.blit(image,(0,0))
         pygame.display.flip()

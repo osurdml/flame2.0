@@ -1,11 +1,14 @@
 from abc import ABCMeta, abstractmethod
 from Filters import Filters
-
+import numpy as np
+import Config
+import sklearn.cluster
 class HotspotFilter(Filters):
 
     def __init__(self):
         self.frontierData = 0
         self.hotspotloc = 0
+        self.HOTSPOT_MIN = Config.HOTSPOT_MIN
     def filterData(self, frontierData):
         self.frontierData = frontierData
         self.frontier = (self.frontierData >0).astype(np.uint8)

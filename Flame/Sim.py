@@ -21,5 +21,5 @@ visualizer = Visualizer()
 
 while(i < 10000): #frontierController.hasData()):
     frontierController.tick()
-    visualizer.vis(frontierController.frontierData) # ,frontierController.fov, frontierController.AgentLoc)
+    visualizer.vis(frontierController.frontierData, frontierController.agentLocations) # ,frontierController.fov, frontierController.AgentLoc)
     i = i +1
