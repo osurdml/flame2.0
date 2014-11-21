@@ -6,3 +6,4 @@ class FilterConsumer():
         pass
     def getLocation(self):
         pass
+

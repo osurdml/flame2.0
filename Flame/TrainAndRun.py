@@ -11,7 +11,6 @@ from Visualizer import Visualizer
 
 
 def evaluator(x):
-    print nN
     nN._setParameters(x)
     neuroSim = NeuroSim(nN,0)
     return neuroSim.calcScore()
@@ -40,10 +39,10 @@ nN.addConnection(hidden_to_out)
 
 nN.sortModules()
 
-neuroSim = NeuroSim(nN,0)
 
 ga = GA(evaluator,nN.params,maxEvaluations = 50)
 ga.learn()
 
 
 neuroSim = NeuroSim(nN,1)
+neuroSim.calcScore()
