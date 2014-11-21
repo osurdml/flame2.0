@@ -5,7 +5,6 @@ class FrontierController():
         self.frontierProducer = FrontierProducer
         self.filterConsumers = FilterConsumers
         self.filters = Filters # how to feed back hotspots and/or fov
-        self.agentLocations = []
         self.step = 0
 
     def tick(self):
