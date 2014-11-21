@@ -43,7 +43,7 @@ class NeuroAgent(Agent):
                  self.numbHotSpots[0],self.numbHotSpots[1],self.numbHotSpots[2],self.numbHotSpots[3],
                  self.distHotSpots[0],self.distHotSpots[1],self.distHotSpots[2],self.distHotSpots[3],
                  self.time,self.distToFireCenter]
-        self.actionTaken = math.floor(self.nNet.activate(input)*4)  #Assuming it returns a number 0-1
+        self.actionTaken = math.floor(self.nNet.activate(input)%4+1)  #Assuming it returns a number 0-1
 
     def takeAction(self):
         if(self.actionTaken ==1):

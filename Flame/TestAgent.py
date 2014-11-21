@@ -14,14 +14,17 @@ class TestAgent(Agent):
         return "updatedScore"
 
     def consumeFilterData(self, data):
-        action = (random.randint(-1,1), random.randint(-1,1))
-        self.x = self.x + action[0]
-        self.y = self.y + action[1]
+        self.action = (random.randint(-1,1), random.randint(-1,1))
+
 
     def getLocation(self):
         self.x = int(self.x)
         self.y = int(self.y)
         return (self.x, self.y)
+
+    def takeAction(self):
+        self.x = self.x + self.action[0]
+        self.y = self.y + self.action[1]
 
     def setTime(self, time):
         self.time = time

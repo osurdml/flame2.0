@@ -13,6 +13,7 @@ from Visualizer import Visualizer
 def evaluator(x):
     nN._setParameters(x)
     neuroSim = NeuroSim(nN,0)
+    print "."
     return neuroSim.calcScore()
 
 populationSize = 100
@@ -40,9 +41,11 @@ nN.addConnection(hidden_to_out)
 nN.sortModules()
 
 
-ga = GA(evaluator,nN.params,maxEvaluations = 50)
-ga.learn()
-
+ga = GA(evaluator,nN.params,maxEvaluations = 30)
+result = ga.learn()
+print "..."
+print result
+print "..."
 
 neuroSim = NeuroSim(nN,1)
 neuroSim.calcScore()

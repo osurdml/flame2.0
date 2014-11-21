@@ -12,8 +12,10 @@ class Agent(object):
     def consumeFilterData(self, FilterData): pass
 
     @abstractmethod
-    def getLocation(self):
-        pass
+    def takeAction(self):pass
+
     @abstractmethod
-    def setTime(self):
-        pass
+    def getLocation(self):pass
+
+    @abstractmethod
+    def setTime(self):pass

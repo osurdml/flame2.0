@@ -9,11 +9,11 @@ class NeuroScorer(Scorer):
 
 
     def calcScore(self,filterConsumers, hotspotFilterData):
+        hotspotFilterData = [(200, 200)]
         for x in filterConsumers:
             for y in hotspotFilterData:
-                if(abs(x.getLocation[0]-y[0]+x.getLocation[1]-y[1]) > 20):
+                if(abs(x.getLocation()[0]-y[0]+x.getLocation()[1]-y[1]) > 20):
                     self.score += 1
-
 
     def getScore(self):
         return self.score
