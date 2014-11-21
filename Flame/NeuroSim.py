@@ -9,7 +9,6 @@ from TestScorer import TestScorer
 from Visualizer import Visualizer
 import time
 import numpy as np
-#import neurolab as nl
 from pybrain.structure import FeedForwardNetwork
 
 
@@ -39,6 +38,7 @@ class NeuroSim():
             self.frontierController.tick()
             totalScore += self.agents[0].getScore()
             if (self.visualization == 1):
+                bla = 1
                 visualizer.vis(self.frontierController.frontierData, self.frontierController.agentLocations)
             i = i +1
             

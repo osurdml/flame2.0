@@ -5,11 +5,12 @@ import math
 class FovFilter(Filters):
         def __init__(self):
             self.state = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-            self.fov = 30
+            self.fov = 3000
             self.frontierCenter = [100,100]
 
         def filterData(self, frontierData, hotspotData, myLoc, agentLocations):
 
+            self.state = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
             for x in agentLocations:
                 if self.calcDist(myLoc, x) < self.fov:
 
@@ -40,16 +41,16 @@ class FovFilter(Filters):
 
                     if (angle >= 0) and (angle < math.pi/2):
                         self.state[8] += 1
-                        self.state[9] += self.calcDist(myloc, x)
+                        self.state[9] += self.calcDist(myLoc, x)
                     if (angle > math.pi/2) and (angle < math.pi):
                         self.state[10] += 1
-                        self.state[11] += self.calcDist(myloc, x)
+                        self.state[11] += self.calcDist(myLoc, x)
                     if (angle > math.pi) and (angle < math.pi *3/2):
                         self.state[12] += 1
-                        self.state[13] += self.calcDist(myloc, x)
+                        self.state[13] += self.calcDist(myLoc, x)
                     if (angle > math.pi *3/2) and (angle < math.pi *2):
                         self.state[14] += 1
-                        self.state[15] += self.calcDist(myloc, x)
+                        self.state[15] += self.calcDist(myLoc, x)
 
             self.state[16] = self.calcDist(myLoc, self.frontierCenter)
 

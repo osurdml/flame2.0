@@ -7,7 +7,7 @@ import time
 import numpy as np
 from pybrain.structure import FeedForwardNetwork, LinearLayer, SigmoidLayer, FullConnection
 from pybrain.optimization import GA
-from Visualizer import Visualizer
+#from Visualizer import Visualizer
 
 
 def evaluator(x):
@@ -23,7 +23,7 @@ nN = FeedForwardNetwork()
 inLayer = LinearLayer(18)
 hiddenLayer1 = SigmoidLayer(5)
 hiddenLayer2 = SigmoidLayer(5)
-outLayer = LinearLayer(1)
+outLayer = LinearLayer(4)
 
 nN.addInputModule(inLayer)
 nN.addModule(hiddenLayer1)
@@ -39,10 +39,11 @@ nN.addConnection(hidden1_to_hidden2)
 nN.addConnection(hidden_to_out)
 
 nN.sortModules()
+print nN.params
 
-
-ga = GA(evaluator,nN.params,maxEvaluations = 30)
+ga = GA(evaluator,nN.params,maxEvaluations = 10)
 result = ga.learn()
+what = ga.select()
 print "..."
 print result
 print "..."
