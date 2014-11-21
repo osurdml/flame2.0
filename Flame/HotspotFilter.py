@@ -7,7 +7,7 @@ class HotspotFilter(Filters):
 
     def __init__(self):
         self.frontierData = 0
-        self.hotspotloc = 0
+        self.hotspotloc = []
         self.HOTSPOT_MIN = Config.HOTSPOT_MIN
     def filterData(self, frontierData):
         self.frontierData = frontierData

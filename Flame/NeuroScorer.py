@@ -5,14 +5,15 @@ from random import randint
 class NeuroScorer(Scorer):
 
     def __init__(self):
-        someNumber = 0
+        self.score = 0
 
 
-    def calcScore(self,fireConsumers, fireData):
-        for k in fireConsumers:
-            location = k.getLocation()
-            self.isHotspotObserved(location)
-            k.updateScore(location)
+    def calcScore(self,filterConsumers, hotspotFilterData):
+        for x in filterConsumers:
+            for y in hotspotFilterData:
+                if(abs(x.getLocation[0]-y[0]+x.getLocation[1]-y[1]) > 20):
+                    self.score += 1
 
-    def isHotspotObserved(self,agentLocation):
-        return "noIdea"
+
+    def getScore(self):
+        return self.score

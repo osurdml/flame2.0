@@ -20,10 +20,11 @@ class FrontierController():
             self.filters[1].filterData(self.frontierData, self.filters[0].getData(), x.getLocation(), self.agentLocations)
             x.consumeFilterData(self.filters[1].getData()) #give agent specific data
 
-        self.scorer.calcScore(self.filterConsumers, self.frontierData)
+        self.scorer.calcScore(self.filterConsumers, self.filters[0].getData())
 
-#        for x in self.filterConsumers:
- #           x.updateScore(self.scorer)
+        for x in self.filterConsumers:
+            x.updateScore(self.scorer.getScore())
+
 
 
         self.step += .01

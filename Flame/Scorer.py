@@ -6,3 +6,4 @@ class Scorer:
 
     @abstractmethod
     def calcScore(self,frontierConsumer, frontierData): pass
+    def getScore(self): pass

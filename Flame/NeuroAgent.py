@@ -16,9 +16,9 @@ class NeuroAgent(Agent):
         self.distToFireCenter = 0
         self.score = 0
         self.actionTaken = 0
-        self.location = [0,0]
+        self.location = [50,50]
 
-    def consumeFilterData(self, frontierData):
+    def consumeFilterData(self, filterData):
         self.timeElapsed = randint(1,10)
         self.numbAgents = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
         self.distAgents =[randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
