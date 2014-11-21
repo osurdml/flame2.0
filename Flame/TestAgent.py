@@ -8,8 +8,9 @@ class TestAgent(Agent):
         someNumber = 0
         self.x = random.randint(45, 50)
         self.y = random.randint(45, 50)
+        self.time = 0
 
-    def updateScore(self):
+    def updateScore(self, score):
         return "updatedScore"
 
     def consumeFilterData(self, data):
@@ -21,3 +22,6 @@ class TestAgent(Agent):
         self.x = int(self.x)
         self.y = int(self.y)
         return (self.x, self.y)
+
+    def setTime(self, time):
+        self.time = time

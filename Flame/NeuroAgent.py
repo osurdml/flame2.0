@@ -12,20 +12,18 @@ class NeuroAgent(Agent):
         self.distAgents =[0,0,0,0]
         self.numbHotSpots = [0,0,0,0]
         self.distHotSpots = [0,0,0,0]
-        self.timeElapsed = 0
         self.distToFireCenter = 0
         self.score = 0
         self.actionTaken = 0
         self.location = [50,50]
+        self.time = 0
 
     def consumeFilterData(self, filterData):
-        self.timeElapsed = randint(1,10)
-        self.numbAgents = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
-        self.distAgents =[randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
-        self.numbHotSpots = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
-        self.distHotSpots = [randint(1,10),randint(1,10),randint(1,10),randint(1,10)]
-        self.timeElapsed = randint(1,10)
-        self.distToFireCenter = randint(1,10)
+        self.numbAgents = [filterData[0],filterData[2],filterData[4],filterData[6]]
+        self.distAgents =[filterData[1],filterData[3],filterData[5],filterData[7]]
+        self.numbHotSpots = [filterData[8],filterData[10],filterData[12],filterData[14]]
+        self.distHotSpots = [filterData[9],filterData[11],filterData[13],filterData[15]]
+        self.distToFireCenter = filterData[16]
         self.calcActionTaken()
         self.takeAction()
 
@@ -44,7 +42,7 @@ class NeuroAgent(Agent):
                  self.distAgents[0],self.distAgents[1],self.distAgents[2],self.distAgents[3],
                  self.numbHotSpots[0],self.numbHotSpots[1],self.numbHotSpots[2],self.numbHotSpots[3],
                  self.distHotSpots[0],self.distHotSpots[1],self.distHotSpots[2],self.distHotSpots[3],
-                 self.timeElapsed,self.distToFireCenter]
+                 self.time,self.distToFireCenter]
         self.actionTaken = math.floor(self.nNet.activate(input)*4)  #Assuming it returns a number 0-1
 
     def takeAction(self):
@@ -57,3 +55,5 @@ class NeuroAgent(Agent):
         elif(self.actionTaken ==4):
             self.location[0] -= 1
 
+    def setTime(self, time):
+        self.time = time
