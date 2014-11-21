@@ -40,12 +40,14 @@ nN.addConnection(hidden_to_out)
 
 nN.sortModules()
 
+print nN.params
 
-ga = GA(evaluator,nN.params,maxEvaluations = 30)
+ga = GA(evaluator,nN.params,maxEvaluations = 3)
 result = ga.learn()
+
 print "..."
 print result
 print "..."
 
-neuroSim = NeuroSim(nN,1)
+neuroSim = NeuroSim(nN,0)
 neuroSim.calcScore()
