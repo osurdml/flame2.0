@@ -15,7 +15,7 @@ class NeuroAgent(Agent):
         self.distToFireCenter = 0
         self.score = 0
         self.actionTaken = 0
-        self.location = [randint(1,200),randint(1,200)]
+        self.location = [randint(1,300),randint(1,300)]
         self.time = 0
 
     def consumeFilterData(self, filterData):
@@ -38,21 +38,23 @@ class NeuroAgent(Agent):
 
 
     def calcActionTaken(self):
-        input = [self.numbAgents[0],self.numbAgents[1],self.numbAgents[2],self.numbAgents[3],
-                 self.distAgents[0],self.distAgents[1],self.distAgents[2],self.distAgents[3],
-                 self.numbHotSpots[0],self.numbHotSpots[1],self.numbHotSpots[2],self.numbHotSpots[3],
-                 self.distHotSpots[0],self.distHotSpots[1],self.distHotSpots[2],self.distHotSpots[3],
-                 self.time,self.distToFireCenter]
-        self.actionTaken = math.floor(self.nNet.activate(input)%4+1)  #Assuming it returns a number 0-1
+        input = [float(self.numbAgents[0])/10,float(self.numbAgents[1])/10,float(self.numbAgents[2])/10,float(self.numbAgents[3])/10,
+                 float(self.distAgents[0])/3000,float(self.distAgents[1])/3000,float(self.distAgents[2])/3000,float(self.distAgents[3])/3000,
+                 float(self.numbHotSpots[0])/50,float(self.numbHotSpots[1])/50,float(self.numbHotSpots[2])/50,float(self.numbHotSpots[3])/50,
+                 float(self.distHotSpots[0])/3000,float(self.distHotSpots[1])/3000,float(self.distHotSpots[2])/3000,float(self.distHotSpots[3])/3000,
+                 self.time,self.distToFireCenter/500]
+        nNOutput = self.nNet.activate(input)
+        m = max(nNOutput)
+        self.actionTaken = [i for i, j in enumerate(nNOutput) if j == m]
 
     def takeAction(self):
-        if(self.actionTaken ==1):
+        if(self.actionTaken[0] == 0):
             self.location[1] += 1
-        elif(self.actionTaken ==2):
+        elif(self.actionTaken[0] == 1):
             self.location[0] += 1
-        elif(self.actionTaken ==3):
+        elif(self.actionTaken[0] == 2):
             self.location[1] -= 1
-        elif(self.actionTaken ==4):
+        elif(self.actionTaken[0] == 3):
             self.location[0] -= 1
 
     def setTime(self, time):
