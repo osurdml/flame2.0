@@ -45,11 +45,11 @@ print nN.params
 populationSize = 100
 
 
-#with open('population_data.pkl','rb') as input:
-#   initPopulation = pickle.load(input)
+with open('population_data.pkl','rb') as input:
+   initPopulation = pickle.load(input)
 #initialPopulation = initPopulation
 
-ga = GA(evaluator,nN.params,maxEvaluations = 30000,initRangeScaling = 2,elitism = False,populationSize = populationSize)
+ga = GA(evaluator,nN.params,maxEvaluations = 100,initRangeScaling = 2,elitism = False,populationSize = populationSize,initialPopulation = initPopulation)
 ga.minimize = True
 result = ga.learn()
 currentPopulation = ga.currentpop
@@ -62,6 +62,6 @@ with open('population_data.pkl','wb') as output:
 print "..."
 print result
 print "..."
-
+nN._setParameters(result[0])
 neuroSim = NeuroSim(nN,1)
 print neuroSim.calcScore()

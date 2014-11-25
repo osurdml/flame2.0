@@ -5,8 +5,8 @@ import math
 class SimpleFovFilter(Filters):
         def __init__(self):
             self.state = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-            self.fov = 300
-            self.frontierCenter = [5,15]
+            self.fov = 500
+            self.frontierCenter = [80,80]
 
         def filterData(self, frontierData, hotspotData, myLoc, agentLocations):
 

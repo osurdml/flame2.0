@@ -10,7 +10,7 @@ from SimpleHotspotFilter import SimpleHotspotFilter
 from SimpleProducer import SimpleProducer
 from SimpleScorer import SimpleScorer
 from TestScorer import TestScorer
-#from Visualizer import Visualizer
+from Visualizer import Visualizer
 import time
 import numpy as np
 from pybrain.structure import FeedForwardNetwork
@@ -31,7 +31,7 @@ class NeuroSim():
 
     def calcScore(self):
         i = 0
-        #visualizer = Visualizer()
+        visualizer = Visualizer()
         totalScore = 0
         iterations = 100
         if (self.visualization == 1):
@@ -43,7 +43,7 @@ class NeuroSim():
             totalScore += self.agents[0].getScore()
             if (self.visualization == 1):
                 bla = 1
-                #visualizer.vis(self.frontierController.frontierData, self.frontierController.agentLocations)
+                visualizer.vis(self.frontierController.frontierData, self.frontierController.agentLocations)
             i = i +1
 
         return totalScore
