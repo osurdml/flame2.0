@@ -63,5 +63,9 @@ print "..."
 print result
 print "..."
 nN._setParameters(result[0])
-neuroSim = NeuroSim(nN,1)
-print neuroSim.calcScore()
+inp = 'y'
+while inp == 'y':
+    neuroSim = NeuroSim(nN,1)
+    print neuroSim.calcScore()
+    inp = raw_input('y?')
+
