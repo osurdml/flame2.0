@@ -35,7 +35,7 @@ class NeuroSim():
         totalScore = 0
         iterations = 100
         if (self.visualization == 1):
-            iterations = 100
+            iterations = 1000
 
 
         while(i < iterations): #frontierController.hasData()):

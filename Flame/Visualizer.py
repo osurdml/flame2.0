@@ -12,7 +12,7 @@ class Visualizer():
         self.screen = pygame.display.set_mode(self.frontier1.shape, pygame.HWSURFACE | pygame.DOUBLEBUF)
 
     def vis(self, frontier, agentLocations):
-        # publish state of fire, agents,hotspots, and actions?
+        # publish state of fire, agents, hotspots, and actions?
         values = (self.frontier1).astype(np.uint32)  #what to display
         values[values == 0] = 0xFFFFFF #background
 
@@ -25,5 +25,6 @@ class Visualizer():
         # Draw the agents
         for x in agentLocations:
             pygame.draw.circle(self.screen, (0,125,0), (x[0], x[1]), 4)
-
+        for x in frontier:
+            pygame.draw.circle(self.screen, (255, 255, 0), (x[0], x[1]), 4)
         pygame.display.flip()
