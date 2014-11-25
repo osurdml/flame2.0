@@ -2,11 +2,11 @@ from abc import ABCMeta, abstractmethod
 from Filters import Filters
 import math
 
-class FovFilter(Filters):
+class SimpleFovFilter(Filters):
         def __init__(self):
             self.state = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
-            self.fov = 30
-            self.frontierCenter = [100,100]
+            self.fov = 300
+            self.frontierCenter = [5,15]
 
         def filterData(self, frontierData, hotspotData, myLoc, agentLocations):
 
