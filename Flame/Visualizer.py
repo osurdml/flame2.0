@@ -1,4 +1,4 @@
-#import pygame
+import pygame
 import numpy as np
 import osgeo.gdal
 
@@ -6,14 +6,14 @@ class Visualizer():
     def __init__(self):
         #startups
         toa_file = "ash1_raster.toa"
-        frontier = np.array(osgeo.gdal.Open(toa_file).ReadAsArray())
+        self.frontier1 = np.array(osgeo.gdal.Open(toa_file).ReadAsArray())
         pygame.init()
         pygame.display.set_caption("Flame2.0: Fire Simulator")
-        self.screen = pygame.display.set_mode(frontier.shape, pygame.HWSURFACE | pygame.DOUBLEBUF)
+        self.screen = pygame.display.set_mode(self.frontier1.shape, pygame.HWSURFACE | pygame.DOUBLEBUF)
 
     def vis(self, frontier, agentLocations):
         # publish state of fire, agents,hotspots, and actions?
-        values = (frontier).astype(np.uint32)  #what to display
+        values = (self.frontier1).astype(np.uint32)  #what to display
         values[values == 0] = 0xFFFFFF #background
 
         # Clear the screen
