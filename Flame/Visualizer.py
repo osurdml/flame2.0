@@ -24,6 +24,6 @@ class Visualizer():
 
         # Draw the agents
         for x in agentLocations:
-            pygame.draw.circle(self.screen, (0,255,0), (x[0], x[1]), 2)
+            pygame.draw.circle(self.screen, (0,125,0), (x[0], x[1]), 4)
 
         pygame.display.flip()
