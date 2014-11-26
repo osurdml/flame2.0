@@ -49,7 +49,7 @@ with open('population_data.pkl','rb') as input:
    initPopulation = pickle.load(input)
 #initialPopulation = initPopulation
 
-ga = GA(evaluator,nN.params,maxEvaluations = 1000,initRangeScaling = 2,elitism = False,populationSize = populationSize,initialPopulation = initPopulation)
+ga = GA(evaluator,nN.params,maxEvaluations = 100,initRangeScaling = 2,elitism = False,populationSize = populationSize,initialPopulation = initPopulation)
 ga.minimize = True
 result = ga.learn()
 currentPopulation = ga.currentpop
