@@ -11,6 +11,21 @@ class SimpleFovFilter(Filters):
         def filterData(self, frontierData, hotspotData, myLoc, agentLocations):
 
             self.state = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
+
+            #remove the current agent from all agents list
+            numb = 0;
+            for x in range(0,len(agentLocations)):
+                if (myLoc == agentLocations[x]):
+                    numb = x
+
+            agentLocations.pop(numb)
+
+           #return only the closest agent distance
+            closestQ1 = 10000
+            closestQ2 = 10000
+            closestQ3 = 10000
+            closestQ4 = 10000
+
             for x in agentLocations:
                 if self.calcDist(myLoc, x) < self.fov:
 
@@ -18,19 +33,41 @@ class SimpleFovFilter(Filters):
                         angle = 0
                     else:
                         angle = math.atan2((myLoc[1] - x[1]), (myLoc[0] - x[0]))
-
+                            #Quad 3
                     if (angle >= 0) and (angle < math.pi/2):
                         self.state[0] += 1
-                        self.state[1] += self.calcDist(myLoc, x)
-                    if (angle > math.pi/2) and (angle < math.pi):
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ3):
+                            closestQ3 = dist
+                            self.state[1] = dist
+                            #Quad 4
+                    elif (angle >= math.pi/2) and (angle < math.pi):
                         self.state[2] += 1
-                        self.state[3] += self.calcDist(myLoc, x)
-                    if (angle > math.pi) and (angle < math.pi *3/2):
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ4):
+                            closestQ4 = dist
+                            self.state[3] = dist
+                            #quad 1
+                    elif (angle > -math.pi) and (angle <= -math.pi/2):
                         self.state[4] += 1
-                        self.state[5] += self.calcDist(myLoc, x)
-                    if (angle > math.pi *3/2) and (angle < math.pi *2):
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ1):
+                            closestQ1 = dist
+                            self.state[5] = dist
+                    else:
+                            #quad 2
                         self.state[6] += 1
-                        self.state[7] += self.calcDist(myLoc, x)
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ2):
+                            closestQ2 = dist
+                            self.state[7] = dist
+
+
+            #return only the closest Hotspot distance
+            closestQ1 = 10000
+            closestQ2 = 10000
+            closestQ3 = 10000
+            closestQ4 = 10000
 
             for x in hotspotData:
                 if self.calcDist(myLoc, x) < self.fov:
@@ -38,19 +75,34 @@ class SimpleFovFilter(Filters):
                         angle = 0
                     else:
                         angle = math.atan2((myLoc[1] - x[1]), (myLoc[0] - x[0]))
-
+                    #Quad 3
                     if (angle >= 0) and (angle < math.pi/2):
                         self.state[8] += 1
-                        self.state[9] += self.calcDist(myLoc, x)
-                    if (angle > math.pi/2) and (angle < math.pi):
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ3):
+                            closestQ3 = dist
+                            self.state[9] = dist
+                    #Quad 4
+                    elif (angle > math.pi/2) and (angle < math.pi):
                         self.state[10] += 1
-                        self.state[11] += self.calcDist(myLoc, x)
-                    if (angle > math.pi) and (angle < math.pi *3/2):
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ4):
+                            closestQ4 = dist
+                            self.state[11] += dist
+                    #Quad 1
+                    elif (angle > -math.pi) and (angle <= -math.pi/2):
                         self.state[12] += 1
-                        self.state[13] += self.calcDist(myLoc, x)
-                    if (angle > math.pi *3/2) and (angle < math.pi *2):
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ1):
+                            closestQ1 = dist
+                            self.state[13] += dist
+                    #Quad 2
+                    else:
                         self.state[14] += 1
-                        self.state[15] += self.calcDist(myLoc, x)
+                        dist = self.calcDist(myLoc, x)
+                        if (dist < closestQ2):
+                            closestQ2 = dist
+                            self.state[15] += dist
 
             self.state[16] = self.calcDist(myLoc, self.frontierCenter)
 

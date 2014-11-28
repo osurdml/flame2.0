@@ -10,6 +10,7 @@ class SimpleScorer(Scorer):
 
     def calcScore(self,filterConsumers, hotspotFilterData):
         flag = 0
+        self.score = 0
         for y in hotspotFilterData:
            flag = 0
            for x in filterConsumers:

@@ -18,9 +18,9 @@ from pybrain.structure import FeedForwardNetwork
 
 class NeuroSim():
     def __init__(self,NNet,visualization):
-        self.numAgents = 10
+        self.numAgents = 1
         self.agents = []
-        for x in range(1, self.numAgents):
+        for x in range(0, self.numAgents):
             self.agents.append(NeuroAgent(NNet))
         self.frontierProducer = SimpleProducer()
         self.scorer = SimpleScorer()
