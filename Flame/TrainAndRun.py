@@ -2,22 +2,20 @@ from FrontierController import FrontierController
 from FarsiteProducer import FarsiteProducer
 from TestScorer import TestScorer
 from NeuroSim import NeuroSim
-
+#from Visualizer import Visualizer
 import time
 import numpy as np
 from pybrain.structure import FeedForwardNetwork, LinearLayer, SigmoidLayer, FullConnection
 from pybrain.optimization import GA
 import pickle
-
+#from Visualizer import Visualizer
 
 
 def evaluator(x):
     nN._setParameters(x)
     neuroSim = NeuroSim(nN,0)
-
-    score = neuroSim.calcScore()
-    print score
-    return score
+    print neuroSim.calcScore()
+    return neuroSim.calcScore()
 
 populationSize = 100
 NNetList = []
@@ -47,16 +45,16 @@ print nN.params
 populationSize = 100
 
 
-with open('pop_data_1Agent.pkl','rb') as input:
+with open('population_data.pkl','rb') as input:
    initPopulation = pickle.load(input)
 #initialPopulation = initPopulation
 
-ga = GA(evaluator,nN.params,maxEvaluations = 100,mutationStdDev=.2,initRangeScaling = 2,elitism = True,populationSize = populationSize,initialPopulation = initPopulation)
+ga = GA(evaluator,nN.params,maxEvaluations = 100,initRangeScaling = 2,elitism = False,populationSize = populationSize,initialPopulation = initPopulation)
 ga.minimize = True
 result = ga.learn()
 currentPopulation = ga.currentpop
 
-with open('pop_data_1Agent.pkl','wb') as output:
+with open('population_data.pkl','wb') as output:
     pickle.dump(currentPopulation,output,pickle.HIGHEST_PROTOCOL)
 
 
@@ -65,5 +63,9 @@ print "..."
 print result
 print "..."
 nN._setParameters(result[0])
-neuroSim2 = NeuroSim(nN,1)
-print neuroSim2.calcScore()
+inp = 'y'
+while inp == 'y':
+    neuroSim = NeuroSim(nN,1)
+    print neuroSim.calcScore()
+    inp = raw_input('y?')
+

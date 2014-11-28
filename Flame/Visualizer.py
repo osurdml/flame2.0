@@ -13,6 +13,7 @@ class Visualizer():
 
     def vis(self, frontier, agentLocations):
         # publish state of fire, agents, hotspots, and actions?
+        self.frontier1 = np.zeros_like(self.frontier1)
         values = (self.frontier1).astype(np.uint32)  #what to display
         values[values == 0] = 0xFFFFFF #background
 

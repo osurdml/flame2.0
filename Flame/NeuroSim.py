@@ -33,7 +33,7 @@ class NeuroSim():
         i = 0
         visualizer = Visualizer()
         totalScore = 0
-        iterations = 100
+        iterations = 500
         if (self.visualization == 1):
             iterations = 1000
 
