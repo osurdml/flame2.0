@@ -17,6 +17,15 @@ class NeuroAgent(Agent):
         self.actionTaken = 0
 
         self.location = [randint(1,20),randint(1,20)]
+        #rand = randint(1,4)
+        #if(rand == 1):
+        #    self.location = [0,0]
+        #elif(rand == 2):
+        #    self.location = [0,100]
+        #elif(rand == 3):
+        #    self.location = [100,100]
+        #else:
+        #    self.location = [100,0]
         self.time = 0
 
     def consumeFilterData(self, filterData):

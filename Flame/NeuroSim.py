@@ -14,6 +14,7 @@ from Visualizer import Visualizer
 import time
 import numpy as np
 from pybrain.structure import FeedForwardNetwork
+from SimpleDistScorer import SimpleDistScorer
 
 
 class NeuroSim():
@@ -33,9 +34,9 @@ class NeuroSim():
         i = 0
         visualizer = Visualizer()
         totalScore = 0
-        iterations = 100
+        iterations = 200
         if (self.visualization == 1):
-            iterations = 1000
+            iterations = 200
 
 
         while(i < iterations): #frontierController.hasData()):

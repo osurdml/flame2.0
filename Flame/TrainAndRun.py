@@ -14,10 +14,10 @@ import pickle
 def evaluator(x):
     nN._setParameters(x)
     neuroSim = NeuroSim(nN,0)
-    print neuroSim.calcScore()
-    return neuroSim.calcScore()
+    score = neuroSim.calcScore()
+    print score
+    return score
 
-populationSize = 100
 NNetList = []
 nN = FeedForwardNetwork()
 
@@ -65,7 +65,7 @@ print "..."
 nN._setParameters(result[0])
 inp = 'y'
 while inp == 'y':
-    neuroSim = NeuroSim(nN,1)
-    print neuroSim.calcScore()
+    neuroSim1 = NeuroSim(nN,1)
+    print neuroSim1.calcScore()
     inp = raw_input('y?')
 
