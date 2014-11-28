@@ -45,7 +45,7 @@ print nN.params
 populationSize = 100
 
 
-with open('population_data.pkl','rb') as input:
+with open('pop_data_1Agent.pkl','rb') as input:
    initPopulation = pickle.load(input)
 #initialPopulation = initPopulation
 
@@ -54,7 +54,7 @@ ga.minimize = True
 result = ga.learn()
 currentPopulation = ga.currentpop
 
-with open('population_data.pkl','wb') as output:
+with open('pop_data_1Agent.pkl','wb') as output:
     pickle.dump(currentPopulation,output,pickle.HIGHEST_PROTOCOL)
 
 
