@@ -16,7 +16,7 @@ def evaluator(x):
     neuroSim = NeuroSim(nN,0)
     score = neuroSim.calcScore()
     with open('LearningScore.pkl','ab') as output:
-        pickle.dump(score,output,pickle.HIGHEST_PROTOCOL)
+        pickle.dump([score],output,pickle.HIGHEST_PROTOCOL)
     print score
     return score
 

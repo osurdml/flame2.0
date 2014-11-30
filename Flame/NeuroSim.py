@@ -34,9 +34,9 @@ class NeuroSim():
         i = 0
         visualizer = Visualizer()
         totalScore = 0
-        iterations = 200
+        iterations = 500
         if (self.visualization == 1):
-            iterations = 200
+            iterations = 500
 
 
         while(i < iterations): #frontierController.hasData()):
@@ -44,6 +44,7 @@ class NeuroSim():
             totalScore += self.agents[0].getScore()
             if (self.visualization == 1):
                 visualizer.vis(self.frontierController.frontierData, self.frontierController.agentLocations)
+                print self.frontierController.agentLocations
             i = i +1
 
         return totalScore
