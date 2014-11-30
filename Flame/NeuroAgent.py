@@ -17,6 +17,15 @@ class NeuroAgent(Agent):
         self.actionTaken = 0
 
         self.location = [randint(1,20),randint(1,20)]
+        #rand = randint(1,4)
+        #if(rand == 1):
+        #    self.location = [0,0]
+        #elif(rand == 2):
+        #    self.location = [0,100]
+        #elif(rand == 3):
+        #    self.location = [100,100]
+        #else:
+        #    self.location = [100,0]
         self.time = 0
 
     def consumeFilterData(self, filterData):
@@ -24,7 +33,7 @@ class NeuroAgent(Agent):
         self.distAgents =[filterData[1],filterData[3],filterData[5],filterData[7]]
         self.numbHotSpots = [filterData[8],filterData[10],filterData[12],filterData[14]]
         self.distHotSpots = [filterData[9],filterData[11],filterData[13],filterData[15]]
-        self.distToFireCenter = filterData[16]
+        self.locationOfFireCenter = filterData[16]
         self.calcActionTaken()
         self.takeAction()
 
@@ -40,9 +49,10 @@ class NeuroAgent(Agent):
 
     def calcActionTaken(self):
         input = [float(self.numbAgents[0])/10,float(self.numbAgents[1])/10,float(self.numbAgents[2])/10,float(self.numbAgents[3])/10,
-                 float(self.distAgents[0])/3000,float(self.distAgents[1])/3000,float(self.distAgents[2])/3000,float(self.distAgents[3])/3000,
+                 float(self.distAgents[0])/200,float(self.distAgents[1])/200,float(self.distAgents[2])/200,float(self.distAgents[3])/200,
                  float(self.numbHotSpots[0])/50,float(self.numbHotSpots[1])/50,float(self.numbHotSpots[2])/50,float(self.numbHotSpots[3])/50,
-                 float(self.distHotSpots[0])/3000,float(self.distHotSpots[1])/3000,float(self.distHotSpots[2])/3000,float(self.distHotSpots[3])/3000,self.time/1000,self.distToFireCenter/500]
+                 float(self.distHotSpots[0])/200,float(self.distHotSpots[1])/200,float(self.distHotSpots[2])/200,float(self.distHotSpots[3])/200,
+                 self.time,self.locationOfFireCenter/4]
         nNOutput = self.nNet.activate(input)
         m = max(nNOutput)
         self.actionTaken = [i for i, j in enumerate(nNOutput) if j == m]

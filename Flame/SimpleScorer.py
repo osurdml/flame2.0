@@ -10,10 +10,11 @@ class SimpleScorer(Scorer):
 
     def calcScore(self,filterConsumers, hotspotFilterData):
         flag = 0
+        self.score = 0
         for y in hotspotFilterData:
            flag = 0
            for x in filterConsumers:
-               if(abs(x.getLocation()[0]-y[0]+x.getLocation()[1]-y[1]) <= 20):
+               if(abs(x.getLocation()[0]-y[0])+abs(x.getLocation()[1]-y[1]) <= 20):
                    flag = 1
            if(flag == 0):
                 self.score += 1

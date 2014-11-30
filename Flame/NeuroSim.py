@@ -14,13 +14,14 @@ from Visualizer import Visualizer
 import time
 import numpy as np
 from pybrain.structure import FeedForwardNetwork
+from SimpleDistScorer import SimpleDistScorer
 
 
 class NeuroSim():
     def __init__(self,NNet,visualization):
-        self.numAgents = 10
+        self.numAgents = 1
         self.agents = []
-        for x in range(1, self.numAgents):
+        for x in range(0, self.numAgents):
             self.agents.append(NeuroAgent(NNet))
         self.frontierProducer = SimpleProducer()
         self.scorer = SimpleScorer()
@@ -33,9 +34,9 @@ class NeuroSim():
         i = 0
         visualizer = Visualizer()
         totalScore = 0
-        iterations = 500
+        iterations = 200
         if (self.visualization == 1):
-            iterations = 1000
+            iterations = 200
 
 
         while(i < iterations): #frontierController.hasData()):

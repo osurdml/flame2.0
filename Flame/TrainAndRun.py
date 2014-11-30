@@ -20,7 +20,6 @@ def evaluator(x):
     print score
     return score
 
-populationSize = 100
 NNetList = []
 nN = FeedForwardNetwork()
 
@@ -48,7 +47,7 @@ print nN.params
 populationSize = 100
 
 
-with open('population_data.pkl','rb') as input:
+with open('pop_data_1Agent.pkl','rb') as input:
    initPopulation = pickle.load(input)
 #initialPopulation = initPopulation
 
@@ -57,7 +56,7 @@ ga.minimize = True
 result = ga.learn()
 currentPopulation = ga.currentpop
 
-with open('population_data.pkl','wb') as output:
+with open('pop_data_1Agent.pkl','wb') as output:
     pickle.dump(currentPopulation,output,pickle.HIGHEST_PROTOCOL)
 
 
@@ -68,7 +67,7 @@ print "..."
 nN._setParameters(result[0])
 inp = 'y'
 while inp == 'y':
-    neuroSim = NeuroSim(nN,1)
-    print neuroSim.calcScore()
+    neuroSim1 = NeuroSim(nN,1)
+    print neuroSim1.calcScore()
     inp = raw_input('y?')
 
