@@ -42,7 +42,6 @@ class NeuroSim():
             self.frontierController.tick()
             totalScore += self.agents[0].getScore()
             if (self.visualization == 1):
-                bla = 1
                 visualizer.vis(self.frontierController.frontierData, self.frontierController.agentLocations)
             i = i +1
 

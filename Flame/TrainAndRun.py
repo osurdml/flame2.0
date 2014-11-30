@@ -14,8 +14,11 @@ import pickle
 def evaluator(x):
     nN._setParameters(x)
     neuroSim = NeuroSim(nN,0)
-    print neuroSim.calcScore()
-    return neuroSim.calcScore()
+    score = neuroSim.calcScore()
+    with open('LearningScore.pkl','ab') as output:
+        pickle.dump(score,output,pickle.HIGHEST_PROTOCOL)
+    print score
+    return score
 
 populationSize = 100
 NNetList = []
