@@ -7,5 +7,5 @@ with open('LearningScore.pkl', 'rb') as input:
 print data
 y = range(len(data))
 
-plt.plot(data, y)
+plt.plot(y,data)
 plt.show()

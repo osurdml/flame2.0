@@ -9,14 +9,15 @@ from pybrain.structure import FeedForwardNetwork, LinearLayer, SigmoidLayer, Ful
 from pybrain.optimization import GA
 import pickle
 #from Visualizer import Visualizer
-
+score_plot = []
 
 def evaluator(x):
     nN._setParameters(x)
     neuroSim = NeuroSim(nN,0)
     score = neuroSim.calcScore()
-    with open('LearningScore.pkl','ab') as output:
-        pickle.dump([score],output,pickle.HIGHEST_PROTOCOL)
+    score_plot.append(score)
+    with open('LearningScore.pkl','wb') as output:
+        pickle.dump(score_plot,output,pickle.HIGHEST_PROTOCOL)
     print score
     return score
 
