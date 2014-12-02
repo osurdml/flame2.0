@@ -6,22 +6,33 @@ class SimpleDistScorer(Scorer):
 
     def __init__(self):
         self.score = 0
+        self.scoreCompare = 0
+        self.globalScore = 0
 
 
     def calcScore(self,filterConsumers, hotspotFilterData):
         flag = 0
         self.score = 0
-        if(abs(filterConsumers[0].getLocation()[0]-hotspotFilterData[0][0])+abs(filterConsumers[0].getLocation()[1]-hotspotFilterData[0][1]) <= 20):
-            self.score = 0
-        else:
-            self.score = abs(filterConsumers[0].getLocation()[0]-hotspotFilterData[0][0])+abs(filterConsumers[0].getLocation()[1]-hotspotFilterData[0][1])
+        for hs in hotspotFilterData:
+            closestAgentDist = 10000000
+            for agent in filterConsumers:
+                distSquared = (agent.getLocation()[0]-hs[0])**2+(agent.getLocation()[1]-hs[1])**2
+                if(distSquared < closestAgentDist):
+                    closestAgentDist = distSquared
+            self.score += closestAgentDist
 
-
-
-
-
-
-
+        #self.globalScore = self.score
+        #del filterConsumers[workingNN]
+        #for hs in hotspotFilterData:
+        #    closestAgentDist = 10000000
+        #    for agent in filterConsumers:
+        #        distSquared = (agent.getLocation()[0]-hs[0])**2+(agent.getLocation()[1]-hs[1])**2
+        #        if(distSquared < closestAgentDist):
+        #            closestAgentDist = distSquared
+        #    self.score -= closestAgentDist
 
     def getScore(self):
         return self.score
+
+    def getGlobalScore(self):
+        return self.globalScore

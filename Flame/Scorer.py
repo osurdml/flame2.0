@@ -5,5 +5,5 @@ class Scorer:
     __metaclass__ = ABCMeta
 
     @abstractmethod
-    def calcScore(self,frontierConsumer, frontierData): pass
+    def calcScore(self,frontierConsumer, frontierData, workingNN): pass
     def getScore(self): pass

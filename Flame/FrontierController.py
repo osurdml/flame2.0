@@ -5,13 +5,14 @@ class FrontierController():
         self.frontierProducer = FrontierProducer
         self.filterConsumers = FilterConsumers
         self.filters = Filters # how to feed back hotspots and/or fov
+        self.agentLocations = []
         self.step = 0
 
     def tick(self):
         self.frontierData = self.frontierProducer.getFrontierData(self.step)
         #apply data filter to find hotspots or any other non agent specific info
         self.filters[0].filterData(self.frontierData)
-        self.agentLocations = []
+        #self.agentLocations = []
         for x in self.filterConsumers:
             self.agentLocations.append(x.getLocation())
 
@@ -20,7 +21,6 @@ class FrontierController():
             self.filters[1].filterData(self.frontierData, self.filters[0].getData(), x.getLocation(), self.agentLocations)
             x.setTime(self.step)
             x.consumeFilterData(self.filters[1].getData()) #give agent specific data
-            x.takeAction()
 
         self.scorer.calcScore(self.filterConsumers, self.filters[0].getData())
 
@@ -31,3 +31,6 @@ class FrontierController():
 
     def hasData(self):
         return self.frontierProducer.hasData()
+
+    def getAgentLocations(self):
+        return self.agentLocations

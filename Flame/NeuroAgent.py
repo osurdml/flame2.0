@@ -16,16 +16,16 @@ class NeuroAgent(Agent):
         self.score = 0
         self.actionTaken = 0
 
-        self.location = [randint(1,20),randint(1,20)]
+        self.location = [0,0]
         #rand = randint(1,4)
         #if(rand == 1):
-        #    self.location = [0,0]
+            #self.location = [randint(1,10),randint(1,10)]
         #elif(rand == 2):
-        #    self.location = [0,100]
+            #self.location = [randint(1,10),randint(90,100)]
         #elif(rand == 3):
-        #    self.location = [100,100]
+            #self.location = [randint(90,100),randint(90,100)]
         #else:
-        #    self.location = [100,0]
+            #self.location = [randint(90,100),randint(1,10)]
         self.time = 0
 
     def consumeFilterData(self, filterData):
@@ -60,11 +60,15 @@ class NeuroAgent(Agent):
     def takeAction(self):
         if(self.actionTaken[0] == 0):
             self.location[1] += 1
+            self.location[0] += 1
         elif(self.actionTaken[0] == 1):
+            self.location[1] -= 1
             self.location[0] += 1
         elif(self.actionTaken[0] == 2):
-            self.location[1] -= 1
+            self.location[1] += 1
+            self.location[0] -= 1
         elif(self.actionTaken[0] == 3):
+            self.location[1] -= 1
             self.location[0] -= 1
 
     def setTime(self, time):

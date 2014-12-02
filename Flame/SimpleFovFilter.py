@@ -1,6 +1,7 @@
 from abc import ABCMeta, abstractmethod
 from Filters import Filters
 import math
+import copy
 
 class SimpleFovFilter(Filters):
         def __init__(self):
@@ -8,8 +9,8 @@ class SimpleFovFilter(Filters):
             self.fov = 500
             self.frontierCenter = [80,80]
 
-        def filterData(self, frontierData, hotspotData, myLoc, agentLocations):
-
+        def filterData(self, frontierData, hotspotData, myLoc, agentLocationsList):
+            agentLocations = copy.deepcopy(agentLocationsList)
             self.state = [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]
 
             #remove the current agent from all agents list
