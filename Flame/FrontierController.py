@@ -14,7 +14,7 @@ class FrontierController():
         self.agentLocations = []
         for x in self.filterConsumers:
             self.agentLocations.append(x.getLocation())
-
+            #print self.agentLocations
         for x in self.filterConsumers:
             #apply agent specific filter
             self.filters[1].filterData(self.frontierData, self.filters[0].getData(), x.getLocation(), self.agentLocations)
