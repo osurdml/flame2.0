@@ -5,6 +5,8 @@ from HotspotFilter import HotspotFilter
 from NeuroAgent import NeuroAgent
 from FarsiteProducer import FarsiteProducer
 from NeuroScorer import NeuroScorer
+from SimpleDifferenceScorer import SimpleDifferenceScorer
+from SimpleDistDiminishScorer import SimpleDistDiminishScorer
 from SimpleFovFilter import SimpleFovFilter
 from SimpleHotspotFilter import SimpleHotspotFilter
 from SimpleProducer import SimpleProducer
@@ -18,11 +20,11 @@ from SimpleDistScorer import SimpleDistScorer
 
 
 class NeuroSim():
-    def __init__(self,NNetList,visualization):
-        #def __init__(self,NNetList,workingNN,visualization):
+    def __init__(self,NNetList,workingNN,visualization):
+        #def __init__(self,NNetList,visualization):
         self.numAgents = 3
         self.agents = []
-        #self.workingNN = workingNN
+        self.workingNN = workingNN
         self.globalScore = 0
         for x in range(0, self.numAgents):
             self.agents.append(NeuroAgent(NNetList[x]))
@@ -43,14 +45,17 @@ class NeuroSim():
 
 
         while(i < iterations): #frontierController.hasData()):
-            self.frontierController.tick()
+            self.frontierController.tick(self.workingNN)
             #print self.frontierController.agentLocations
-            totalScore += self.agents[0].getScore()
+            totalScore += self.agents[self.workingNN].getScore()
             self.globalScore += self.scorer.getGlobalScore()
             if (self.visualization == 1):
                 visualizer.vis(self.frontierController.frontierData, self.frontierController.agentLocations)
 #                print self.frontierController.agentLocations
-                #time.sleep(.5)
-            i = i +1
+                time.sleep(.03)
+            i = i + 1
 
         return totalScore
+
+    def getGlobalScore(self):
+        return self.globalScore

@@ -27,5 +27,5 @@ class Visualizer():
         for x in agentLocations:
             pygame.draw.circle(self.screen, (0,125,0), (x[0], x[1]), 4)
         for x in frontier:
-            pygame.draw.circle(self.screen, (255, 255, 0), (x[0], x[1]), 4)
+            pygame.draw.circle(self.screen, (50, 255, 0), (x[0], x[1]), 4)
         pygame.display.flip()
