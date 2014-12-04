@@ -29,7 +29,7 @@ class NeuroSim():
         for x in range(0, self.numAgents):
             self.agents.append(NeuroAgent(NNetList[x]))
         self.frontierProducer = SimpleProducer()
-        self.scorer = SimpleDistScorer()
+        self.scorer = SimpleDistDiminishScorer()
         self.hotSpotFilter = SimpleHotspotFilter()
         self.fovFilter = SimpleFovFilter()
         self.visualization = visualization

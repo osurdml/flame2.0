@@ -8,12 +8,12 @@ class SimpleProducer(FrontierProducer):
         self.hotSpots = []
         #self.hotSpots.append([23,100])
         #self.hotSpots.append([50,50])
-        self.hotSpots.append([66,80])
+        #self.hotSpots.append([66,80])
         #self.hotSpots.append([99,50])
         #self.hotSpots.append([56,10])
         #self.hotSpots.append([78,50])
         self.hotSpots.append([50,130])
-        #self.hotSpots.append([63,90])
+        self.hotSpots.append([63,90])
         self.hotSpots.append([87,5])
         #self.hotSpots.append([111,98])
         

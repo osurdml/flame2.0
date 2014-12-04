@@ -13,9 +13,9 @@ class SimpleDistScorer(Scorer):
     def calcScore(self,filterConsumers, hotspotFilterData, workingNN):
         flag = 0
         self.score = 0
-        for agent in filterConsumers:
+        for hs in hotspotFilterData:
             closestAgentDist = 10000000
-            for hs in hotspotFilterData:
+            for agent in filterConsumers:
                 distSquared = (agent.getLocation()[0]-hs[0])**2+(agent.getLocation()[1]-hs[1])**2
                 if(distSquared < closestAgentDist):
                     closestAgentDist = distSquared

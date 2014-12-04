@@ -17,8 +17,8 @@ def evaluator(x):
     #neuroSim = NeuroSim(NNetList,0)
     score = neuroSim.calcScore()
     globalScore =  neuroSim.getGlobalScore()
-    print globalScore
-    scoreHistory.append(globalScore)
+    print score
+    scoreHistory.append(score)
     return score
 
 NNetListParams = []

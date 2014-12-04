@@ -1,6 +1,7 @@
 from Scorer import Scorer
 from abc import ABCMeta, abstractmethod
 from random import randint
+import math
 
 class SimpleDistDiminishScorer(Scorer):
 
@@ -13,27 +14,19 @@ class SimpleDistDiminishScorer(Scorer):
     def calcScore(self,filterConsumers, hotspotFilterData, workingNN):
         flag = 0
         self.score = 0
-        distList = []
-        for hs in hotspotFilterData:
+        for agent in filterConsumers:
             closestAgentDist = 10000000
-            for agent in filterConsumers:
-                distList.append((agent.getLocation()[0]-hs[0])**2+(agent.getLocation()[1]-hs[1])**2)
-
-            for x in range(0,len(filterConsumers)):
-                m = min(distList)
-                [i for i, j in enumerate(distList) if j == m]
-                self.score += m*(x+1)
-                del distList[i]
-
+            for hs in hotspotFilterData:
+                dist = math.sqrt((agent.getLocation()[0]-hs[0])**2+(agent.getLocation()[1]-hs[1])**2)
+                self.score += dist
         self.globalScore = self.score
-        #del filterConsumers[workingNN]
-        #for hs in hotspotFilterData:
-        #    closestAgentDist = 10000000
-        #    for agent in filterConsumers:
-        #        distSquared = (agent.getLocation()[0]-hs[0])**2+(agent.getLocation()[1]-hs[1])**2
-        #        if(distSquared < closestAgentDist):
-        #            closestAgentDist = distSquared
-        #    self.score -= closestAgentDist
+        self.score = self.score**2
+
+
+        for agent in filterConsumers:
+            for agent2 in filterConsumers:
+                dist = math.sqrt((agent.getLocation()[0]-agent2.getLocation()[0])**2+(agent.getLocation()[1]-agent2.getLocation()[1])**2)
+                self.score -= dist/2
 
     def getScore(self):
         return self.score
