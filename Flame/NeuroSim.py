@@ -9,6 +9,7 @@ from SimpleDifferenceScorer import SimpleDifferenceScorer
 from SimpleDistDiminishScorer import SimpleDistDiminishScorer
 from SimpleFovFilter import SimpleFovFilter
 from SimpleHotspotFilter import SimpleHotspotFilter
+from SimpleLocalReward import SimpleLocalReward
 from SimpleProducer import SimpleProducer
 from SimpleScorer import SimpleScorer
 from TestScorer import TestScorer

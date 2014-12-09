@@ -19,19 +19,19 @@ class SimpleProducer(FrontierProducer):
         
     def getFrontierData(self, step):
         #for x in self.hotSpots:
-            #rand = randint(1,4)
-            #if(rand == 1):
-            #    x[0] += 1
-            #elif(rand == 2):
-            #    x[0] -= 1
-            #elif(rand == 3):
-            #    x[1] += 1
-            #elif(rand == 4):
-            #    x[1] -= 1
-            #randNumb = randint(1,40)
-            #if(randNumb == 1):
-            #    x[0] == randint(1,100)
-            #    x[1] == randint(1,100)
+         #   rand = randint(1,4)
+          #  if(rand == 1):
+          #      x[0] += 1
+          #  elif(rand == 2):
+          #      x[0] -= 1
+          #  elif(rand == 3):
+          #      x[1] += 1
+          #  elif(rand == 4):
+          #      x[1] -= 1
+          #  randNumb = randint(1,40)
+          #  if(randNumb == 1):
+          #      x[0] == randint(1,100)
+          #      x[1] == randint(1,100)
 
 
         return self.hotSpots
